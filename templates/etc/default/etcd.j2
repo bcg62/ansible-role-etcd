@@ -168,12 +168,27 @@ ETCD_ADVERTISE_CLIENT_URLS="{{ etcd_advertise_client_urls }}"
 ## default: false
 # ETCD_STRICT_RECONFIG_CHECK
 
+# Suffix to the dns srv name queried when bootstrapping.
+# ETCD_DISCOVERY_SRV_NAME=""
+
+# Reject reconfiguration requests that would cause quorum loss.
+# ETCD_STRICT_RECONFIG_CHECK="true"
+
+# Enable to run an additional Raft election phase.
+# ETCD_PRE_VOTE="true"
+
 ##### --auto-compaction-retention
 ## Auto compaction retention for mvcc key value store in hour. 0 means disable
 ## auto compaction.
 ## default: 0
-# ETCD_AUTO_COMPACTION_RETENTION="0"
+ETCD_AUTO_COMPACTION_RETENTION="{{ etcd_auto_compaction_retention }}"
 
+##### –auto-compaction-mode
+## Interpret ‘auto-compaction-retention’ one of: ‘periodic’, ‘revision’.
+## ‘periodic’ for duration based retention, defaulting to hours
+## ‘revision’ for revision number based retention.
+## default: periodic
+ETCD_AUTO_COMPACTION_MODE="{{ etcd_auto_compaction_mode }}"
 
 ##### --enable-v2
 ## Accept etcd V2 client requests
